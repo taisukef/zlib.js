@@ -1,9 +1,9 @@
 import { unzip } from "../unzip.js";
 
 const data = await Deno.readFile("wakayama.zip");
-// compressed = Array.<number> or Uint8Array
-var zips = unzip(data);
-var filenames = zips.getFilenames();
-var plain = new TextDecoder().decode(zips.decompress(filenames[0]));
+// data = Array.<number> or Uint8Array
+const zips = unzip(data);
+const filenames = zips.getFilenames();
 console.log(filenames);
+const plain = new TextDecoder().decode(zips.decompress(filenames[0]));
 console.log(plain);
