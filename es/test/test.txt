@@ -1,0 +1,18 @@
+使い方
+zlib.js は必要な機能ごとに分割されています。 bin ディレクトリから必要なものを利用してください。
+
+zlib_and_gzip.min.js: ZLIB + GZIP
+(Raw)
+rawdeflate.js: Raw Deflate
+raw.js: Raw Inflate
+zlib.min.js: ZLIB Inflate + Deflate
+inflate.min.js: ZLIB Inflate
+deflate.min.js: ZLIB Deflate
+inflate_stream.min.js: ZLIB Inflate (stream mode)
+(GZIP)
+gzip.min.js: GZIP
+gunzip.min.js: GUNZIP
+(PKZIP)
+zip.min.js ZIP
+unzip.min.js UNZIP
+node-zlib.js: (ZLIB + GZIP for node.js)
