@@ -4,7 +4,7 @@
 
 copy from bin/*.min.js
 rename *.min.js *.js
-edit *.js this -> gloabalThis
+edit *.js aa=this -> aa=globalThis
 add *.js
 ```
 const inflate = (buf) => {
