@@ -5,6 +5,8 @@
 ### unzip
 
 ```js
+import { unzip } from "https://taisukef.github.io/zlib.js/es/unzip.js";
+
 const data = await Deno.readFile("wakayama.zip");
 const zips = unzip(data);
 const filenames = zips.getFilenames();
