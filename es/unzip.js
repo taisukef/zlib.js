@@ -33,5 +33,32 @@ e+g);break;case sa.M:m=(new I(this.input,{index:e,bufferSize:k.J})).r();break;de
 k.p.toString(16)+", data=0x"+p.toString(16)))}return m};t.L=function(a){this.j=a};function wa(a,b,c){c^=a.s(b);a.k(b,c);return c}t.k=U.prototype.k;t.S=U.prototype.T;t.s=U.prototype.s;v("Zlib.Unzip",V);v("Zlib.Unzip.prototype.decompress",V.prototype.r);v("Zlib.Unzip.prototype.getFilenames",V.prototype.Y);v("Zlib.Unzip.prototype.setPassword",V.prototype.L);}).call(this);
 // add
 const Zlib = globalThis.Zlib;
-const unzip = (bin) => new Zlib.Unzip(bin);
+const s2bin = (s) => {
+  const bin = new Uint8Array(s.length);
+  for (let i = 0; i < s.length; i++) {
+    bin[i] = s.charCodeAt(i);
+  }
+  return bin;
+};
+class ZipFiles {
+  constructor(zip) {
+    this.zip = zip;
+    const fns = this.zip.getFilenames();
+    this.map = {};
+    this.fns = [];
+    for (const fn of fns) {
+      const bin = s2bin(fn);
+      const fn2 = new TextDecoder().decode(bin);
+      this.map[fn2] = fn;
+      this.fns.push(fn2);
+    }
+  }
+  getFilenames() {
+    return this.fns;
+  }
+  decompress(fn) {
+    return this.zip.decompress(this.map[fn]);
+  }
+}
+const unzip = (bin) => new ZipFiles(new Zlib.Unzip(bin));
 export { unzip };
